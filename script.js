@@ -23,6 +23,8 @@ let computerScore = 0;
 function playRound() {
     let computerChoice = getComputerChoice();
     let humanChoice = getHumanChoice();
+    console.log(humanChoice);
+    console.log(computerChoice);
     let winner = "";
     if (computerChoice == humanChoice) {
         winner = "tie";
@@ -45,7 +47,7 @@ function playRound() {
     if (computerChoice == "scissors" && humanChoice == "rock") {
         winner = "human";
     }
-    console.log(computerChoice);
+
     if (winner == "human") {
         humanScore = humanScore + 1;
     }
@@ -57,4 +59,12 @@ function playRound() {
     console.log("The computer score is: " + computerScore);
 
     return winner;
+}
+
+function playGame() {
+    playRound();
+    playRound();
+    playRound();
+    playRound();
+    playRound();
 }
