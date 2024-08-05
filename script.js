@@ -20,9 +20,9 @@ function getHumanChoice() {
 let humanScore = 0;
 let computerScore = 0;
 
-function playRound() {
+function playRound(a) {
     let computerChoice = getComputerChoice();
-    let humanChoice = getHumanChoice();
+    let humanChoice = a
     console.log(humanChoice);
     console.log(computerChoice);
     let winner = "";
@@ -61,10 +61,57 @@ function playRound() {
     return winner;
 }
 
-function playGame() {
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-    playRound();
-}
+const ul = document.querySelector("ul");
+const results = document.querySelector("div");
+
+// create button elements for each player choice,
+// event listeners for each that trigger a game
+const butRock = document.createElement("button");
+butRock.textContent = "Rock";
+ul.appendChild(butRock);
+butRock.addEventListener("click", () => {
+    playRound("rock");
+    scoreUpdate();
+});
+
+const butScissors = document.createElement("button");
+butScissors.textContent = "Scissors";
+ul.appendChild(butScissors);
+butScissors.addEventListener("click", () => {
+    playRound("scissors");
+    scoreUpdate();
+});
+
+const butPaper = document.createElement("button");
+butPaper.textContent = "Paper";
+ul.appendChild(butPaper);
+butPaper.addEventListener("click", () => {
+    playRound("paper");
+    dispHum.textContent = "Your score is: " + humanScore;
+    dispComp.textContent = "The computer score is: " + computerScore;
+    scoreUpdate();
+});
+
+// display scores
+const dispHum = document.createElement("span");
+const dispComp = document.createElement("span");
+
+function scoreUpdate() {
+    dispHum.textContent = "Your score is: " + humanScore;
+    dispComp.textContent = "The computer score is: " + computerScore;
+};
+
+scoreUpdate();
+
+results.appendChild(dispHum);
+results.appendChild(dispComp);
+
+
+
+// function playGame() {
+//     playRound();
+//     playRound();
+//     playRound();
+//     playRound();
+//     playRound();
+// }
